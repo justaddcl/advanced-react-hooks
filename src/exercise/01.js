@@ -4,10 +4,12 @@
 import React from 'react';
 
 function Counter({initialCount = 0, step = 1}) {
-  // eslint-disable-next-line no-shadow
-  const countReducer = (state, step) => state + step;
-  const [count, changeCount] = React.useReducer(countReducer, initialCount);
-  const increment = () => changeCount(step);
+  const countReducer = (state, action) => ({...state, ...action});
+  const [state, setState] = React.useReducer(countReducer, {
+    count: initialCount,
+  });
+  const {count} = state;
+  const increment = () => setState({count: count + step});
   return (
     <button type="button" onClick={increment}>
       {count}
