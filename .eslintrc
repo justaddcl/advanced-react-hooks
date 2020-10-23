@@ -32,6 +32,7 @@
         "printWidth": 80
       }
     ],
+    "react/button-has-type": "warn",
     "react/jsx-filename-extension": [
       1,
       {
